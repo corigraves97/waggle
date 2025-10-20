@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView
-from django.views.generic import DetailView
+from django.views.generic import DetailView, UpdateView
 from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Profile
@@ -77,3 +78,32 @@ class ProfileView(LoginRequiredMixin, DetailView):
         except Profile.DoesNotExist:
             return redirect('setup_profile')
 
+class EditProfileView(UpdateView):
+    template_name = 'accounts/edit_profile.html'
+    success_url = reverse_lazy('profile')
+
+    def get_object(self, queryset=None):
+        role = self.request.user.profile.roles
+        if role == 'owner':
+            return getattr(self.request.user, 'owner', None)
+        elif role == 'sitter':
+            return getattr(self.request.user, 'sitter', None)
+        elif role == 'both':
+            return getattr(self.request.user, 'owner_and_sitter', None)
+        return None
+    
+    def get_form_class(self):
+        role = self.request.user.profile.roles
+        if role == 'owner':
+            return OwnerForm
+        elif role == 'sitter':
+            return SitterForm
+        elif role == 'both':
+            return BothForm
+        return None
+    
+    def form_valid(self, form):
+        profile = form.save(commit=False)
+        profile.user = self.request.user
+        profile.save()
+        return super().form_valid(form)

@@ -22,14 +22,15 @@
   {% endwith %}
 {% elif profile.roles == 'both' %}
   {% with both=profile.user.owner_and_sitter %}
-    <p><strong>Full Name:</strong> {{ both.name }}</p>
+    <p><strong>Name:</strong> {{ both.name }}</p>
     <p><strong>City:</strong> {{ both.city }}</p>
     <p><strong>State:</strong> {{ both.state }}</p>
-    <p><strong>Experience:</strong> {{ both.experience }}</p>
-    <p><strong>Specialty:</strong> {{ both.specialty }}</p>
+    <p><strong>Experience (In Years):</strong> {{ both.experience }}</p>
+    <p><strong>Animal Expertise / Preference:</strong> {{ both.specialty }}</p>
     <p><strong>Bio:</strong> {{ both.bio }}</p>
   {% endwith %}
 {% endif %}
+<a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
 
 </section>
 {% endblock %}
