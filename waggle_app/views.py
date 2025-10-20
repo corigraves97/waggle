@@ -4,8 +4,8 @@ from .models import Sitter, Owner, Pet, Booking, Profile
 from django.urls import reverse
 from django.http import HttpResponse
 
-def home(request):
-    return render(request, 'waggle_app/home.html')
+class Home(LoginView):
+    template_name = 'home.html'
 
 def profile(request):
     return HttpResponse("Profile page works!")

@@ -17,8 +17,15 @@
             <!-- Removed Sign Up / Sign In buttons for now -->
         </div>
     </header>
-
-    <!-- Main Content -->
+    <nav>
+        <ul>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'profile' %}">Home</a></li>
+            {% else %}
+                <li><a href="{% url 'home' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
     {% block content %}{% endblock %}
 </body>
 </html>
