@@ -118,6 +118,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+LOGININ_REDIRECT_URL = 'profile'
+
+LOGOUT_REDIRECT_URL = 'home'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 

@@ -5,20 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Waggle{% endblock %}</title>
-
-    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'waggle_app/css/home.css' %}">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
             <h1><a href="{% url 'home' %}" style="color:white; text-decoration:none;">Waggle</a></h1>
             <!-- Removed Sign Up / Sign In buttons for now -->
         </div>
     </header>
-
-    <!-- Main Content -->
+    <nav>
+        <ul>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'profile' %}">Profile</a></li>
+                <l1>
+                    <form id="logout-form" method="post" action="{% url 'logout' %}"></form>
+                        {% csrf_token %}
+                        <button type="submit">Log out</button>
+                    </form>
+                </l1>
+            {% else %}
+                <li><a href="{% url 'home' %}">Login</a></li>
+                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            {% endif %}
+        </ul>
+    </nav>
     {% block content %}{% endblock %}
 </body>
 </html>

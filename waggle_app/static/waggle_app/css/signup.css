@@ -1,0 +1,123 @@
+/* ===== Waggle Form Styles ===== */
+
+body {
+  font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f8f5f2;
+  color: #2e2c29;
+  margin: 0;
+  padding: 0;
+}
+
+/* Page Header */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 3rem 0 2rem;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  color: #4b3c2f;
+  font-weight: 600;
+  margin: 0;
+}
+
+.page-header img {
+  width: 60px;
+  height: auto;
+}
+
+/* Error message */
+.red-text {
+  color: #b33a3a;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+/* Form Container */
+.form-container {
+  background: #fffaf6;
+  border: 1px solid #e4ddd7;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.04);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 500px;
+  margin: 0 auto 4rem;
+}
+
+.form-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.form-container td {
+  padding: 0.75rem 0;
+  vertical-align: middle;
+}
+
+.form-container label {
+  display: block;
+  font-weight: 500;
+  color: #3c342e;
+  margin-bottom: 0.25rem;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #d1c7bf;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background-color: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-container input:focus,
+.form-container select:focus,
+.form-container textarea:focus {
+  border-color: #a37b4a;
+  box-shadow: 0 0 0 3px rgba(163, 123, 74, 0.15);
+  outline: none;
+}
+
+/* Buttons */
+.btn.submit {
+  display: inline-block;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  background-color: #c78c59;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.15s ease;
+}
+
+.btn.submit:hover {
+  background-color: #b57948;
+  transform: translateY(-2px);
+}
+
+.btn.submit:active {
+  background-color: #9f6a3f;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .form-container {
+    padding: 1.5rem;
+  }
+  .page-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
