@@ -26,6 +26,18 @@ class Owner(models.Model):
 
     def __str__(self):
         return f"{self.name} (Owner)"
+    
+class Owner_and_Sitter(models.Model):
+    name = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    state = models.CharField(max_length=50)
+    experience = models.IntegerField()
+    specialty = models.CharField(max_length=500, blank=True)
+    bio = models.CharField(max_length=1000, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='owner_and_sitter')
+
+    def __str__(self):
+        return f"{self.name} (Owner & Sitter)"
 
 class Pet(models.Model):
     TYPE_CHOICES = [
@@ -74,9 +86,10 @@ class Profile(models.Model):
         ('both', 'Owner & Sitter'),
     ]
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    roles = models.CharField(max_length=10, choices=ROLE_CHOICES, default='owner')
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-    role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='owner')
-
+    roles = models.CharField(max_length=10, choices=[('owner','Pet Owner'), ('sitter','Pet Sitter'), ('both','Owner & Sitter')])
     def __str__(self):
         return f"{self.user.username} ({self.role})"
+
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance, roles='owner')

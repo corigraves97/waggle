@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Set Up Your Profile</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {% if role == 'owner' %}
+        <h2>Owner Info</h2>
+        {{ owner_form.as_p }}
+    {% endif %}
+    {% if role == 'sitter'  %}
+        <h2>Sitter Info</h2>
+        {{ sitter_form.as_p }}
+    {% endif %}
+    {% if role == 'both'  %}
+        <h2>Owner & Pet Sitter Info</h2>
+        {{ both_form.as_p }}
+    {% endif %}
+    <button type="submit">Save Profile</button>
+</form>
+
+{% endblock %}
+

@@ -1,4 +1,4 @@
-/* ===== Waggle Form Styles ===== */
+
 
 body {
   font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
@@ -8,7 +8,7 @@ body {
   padding: 0;
 }
 
-/* Page Header */
+
 .page-header {
   display: flex;
   align-items: center;
@@ -30,7 +30,6 @@ body {
   height: auto;
 }
 
-/* Error message */
 .red-text {
   color: #b33a3a;
   text-align: center;
@@ -38,7 +37,6 @@ body {
   margin-bottom: 1rem;
 }
 
-/* Form Container */
 .form-container {
   background: #fffaf6;
   border: 1px solid #e4ddd7;
@@ -86,7 +84,6 @@ body {
   outline: none;
 }
 
-/* Buttons */
 .btn.submit {
   display: inline-block;
   width: 100%;
@@ -111,7 +108,6 @@ body {
   transform: translateY(0);
 }
 
-/* Responsive */
 @media (max-width: 600px) {
   .form-container {
     padding: 1.5rem;

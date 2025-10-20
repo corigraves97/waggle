@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="profile-container">
+  <h1>Your Profile</h1>
+
+{% if profile.roles == 'owner' %}
+  {% with owner=profile.user.owner %}
+    <p><strong>Full Name:</strong> {{ owner.name }}</p>
+    <p><strong>City:</strong> {{ owner.city }}</p>
+    <p><strong>State:</strong> {{ owner.state }}</p>
+  {% endwith %}
+{% elif profile.roles == 'sitter' %}
+  {% with sitter=profile.user.sitter %}
+    <p><strong>Full Name:</strong> {{ sitter.name }}</p>
+    <p><strong>City:</strong> {{ sitter.city }}</p>
+    <p><strong>State:</strong> {{ sitter.state }}</p>
+    <p><strong>Experience:</strong> {{ sitter.experience }}</p>
+    <p><strong>Specialty:</strong> {{ sitter.specialty }}</p>
+    <p><strong>Bio:</strong> {{ sitter.bio }}</p>
+  {% endwith %}
+{% elif profile.roles == 'both' %}
+  {% with both=profile.user.owner_and_sitter %}
+    <p><strong>Full Name:</strong> {{ both.name }}</p>
+    <p><strong>City:</strong> {{ both.city }}</p>
+    <p><strong>State:</strong> {{ both.state }}</p>
+    <p><strong>Experience:</strong> {{ both.experience }}</p>
+    <p><strong>Specialty:</strong> {{ both.specialty }}</p>
+    <p><strong>Bio:</strong> {{ both.bio }}</p>
+  {% endwith %}
+{% endif %}
+
+</section>
+{% endblock %}
