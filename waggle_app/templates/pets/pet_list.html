@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}My Pets{% endblock %}
+
+{% block content %}
+<h1>My Pets</h1>
+
+{% if pets %}
+    <ul>
+        {% for pet in pets %}
+            <li><a href="{% url 'pet_detail' pet.pk %}"><strong>{{ pet.name }}</strong> </a>
+                ({{ pet.species }})
+                {% if pet.breed %} - {{ pet.breed }}{% endif %}
+                <br>
+                Age: {{ pet.age }} years
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>You haven't added any pets yet.</p>
+    <a href="{% url 'add_pet' %}">Add your first pet</a>
+{% endif %}
+{% endblock %}

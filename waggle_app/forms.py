@@ -2,7 +2,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Profile, Owner, Sitter, Owner_and_Sitter
+from .models import Profile, Owner, Sitter, Owner_and_Sitter, Pet, Booking
 
 class SignupForm(UserCreationForm):
     ROLE_CHOICES = [
@@ -29,9 +29,24 @@ class OwnerForm(forms.ModelForm):
 class SitterForm(forms.ModelForm):
     class Meta:
         model = Sitter
-        fields = ['name', 'city', 'state', 'experience', 'specialty', 'bio']
+        fields = ['name', 'city', 'state', 'experience', 'specialty', 'bio', 'rate']
 
 class BothForm(forms.ModelForm):
     class Meta:
         model = Owner_and_Sitter
-        fields = ['name', 'city', 'state', 'experience', 'specialty', 'bio']
+        fields = ['name', 'city', 'state', 'experience', 'specialty', 'bio', 'rate']
+
+class PetForm(forms.ModelForm):
+    class Meta:
+        model = Pet
+        fields = ['name', 'species', 'breed', 'age', 'feed_schedule', 'medicine', 'description']
+
+class BookingForm(forms.ModelForm):
+    class Meta:
+        model = Booking
+        fields = ['pets', 'booking_start', 'booking_end', 'message']
+        widgets = {
+            'booking_start': forms.DateInput(attrs={'type': 'date'}),
+            'booking_end': forms.DateInput(attrs={'type': 'date'}),
+            'message': forms.Textarea(attrs={'rows':3}),
+        }

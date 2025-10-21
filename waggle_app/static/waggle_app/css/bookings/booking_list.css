@@ -1,0 +1,29 @@
+
+.booking-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.booking-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.booking-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.booking-card p {
+  margin: 4px 0;
+  color: #555;
+}
+
+.booking-card strong {
+  color: #222;
+}

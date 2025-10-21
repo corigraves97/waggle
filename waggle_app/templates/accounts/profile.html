@@ -19,6 +19,7 @@
     <p><strong>Experience:</strong> {{ sitter.experience }}</p>
     <p><strong>Specialty:</strong> {{ sitter.specialty }}</p>
     <p><strong>Bio:</strong> {{ sitter.bio }}</p>
+    <p><strong>Daily Rate:</strong> ${{both.rate}}</p>
   {% endwith %}
 {% elif profile.roles == 'both' %}
   {% with both=profile.user.owner_and_sitter %}
@@ -28,9 +29,9 @@
     <p><strong>Experience (In Years):</strong> {{ both.experience }}</p>
     <p><strong>Animal Expertise / Preference:</strong> {{ both.specialty }}</p>
     <p><strong>Bio:</strong> {{ both.bio }}</p>
+    <p><strong>Daily Rate:</strong> ${{both.rate}}</p>
   {% endwith %}
 {% endif %}
 <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
-
 </section>
 {% endblock %}

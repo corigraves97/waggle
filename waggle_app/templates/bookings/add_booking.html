@@ -1,0 +1,49 @@
+{# templates/bookings/add_booking.html #}
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Send Booking Request to {{ sitter.name }}</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-group mb-3">
+            <label for="id_pets">Select Pets:</label>
+            {{ form.pets }}
+            {% if form.pets.errors %}
+                <div class="text-danger">{{ form.pets.errors }}</div>
+            {% endif %}
+        </div>
+
+        {# Booking start date #}
+        <div class="form-group mb-3">
+            <label for="id_booking_start">Start Date:</label>
+            {{ form.booking_start }}
+            {% if form.booking_start.errors %}
+                <div class="text-danger">{{ form.booking_start.errors }}</div>
+            {% endif %}
+        </div>
+
+        {# Booking end date #}
+        <div class="form-group mb-3">
+            <label for="id_booking_end">End Date:</label>
+            {{ form.booking_end }}
+            {% if form.booking_end.errors %}
+                <div class="text-danger">{{ form.booking_end.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="id_message">Message:</label>
+            {{ form.message }}
+            {% if form.message.errors %}
+                <div class="text-danger">{{ form.message.errors }}</div>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send Booking Request</button>
+        <a href="{% url 'user_directory' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

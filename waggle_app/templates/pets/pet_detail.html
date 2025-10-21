@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{{ pet.name }}</h2>
+
+<ul>
+    <li><strong>Species:</strong> {{ pet.get_species_display }}</li>
+    <li><strong>Breed:</strong> {{ pet.breed }}</li>
+    <li><strong>Age:</strong> {{ pet.age }}</li>
+    <li><strong>Feed Schedule:</strong> {{ pet.feed_schedule }}</li>
+    <li><strong>Medicine:</strong> {{ pet.medicine }}</li>
+    <li><strong>Description:</strong> {{ pet.description }}</li>
+</ul>
+
+<a href="{% url 'edit_pet' pet.pk %}">Edit</a> 
+<a href="{% url 'delete_pet' pet.pk %}">Delete</a> 
+<a href="{% url 'pet_list' %}">Back to Pet List</a>
+{% endblock %}

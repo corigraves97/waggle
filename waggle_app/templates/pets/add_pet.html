@@ -1,0 +1,9 @@
+<h1>Add a New Pet</h1>
+
+<form method="post" action="{% url 'add_pet' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Add Pet</button>
+</form>
+
+<a href="{% url 'profile' %}">Cancel</a>

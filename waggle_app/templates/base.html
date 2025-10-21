@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'waggle_app/css/home.css' %}">
     {% block head %}{% endblock %}
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -17,24 +19,32 @@
 
     <nav>
         <ul>
-        {% if user.is_authenticated %}
+            {% if user.is_authenticated %}
             <li><a href="{% url 'profile' %}">Profile</a></li>
+
+            {% if user.owner or user.owner_and_sitter %}
+            <li><a href="{% url 'add_pet' %}">Add A Pet</a></li>
+            <li><a href="{% url 'pet_list' %}">My Pets</a></li>
+            <l1><a href="{% url 'user_directory' %}">Find a Sitter</a></l1>
+            <li><a href="{% url 'booking_list' %}"> My Bookings </a></li>
+            {% endif %}
             <li>
                 <form method="post" action="{% url 'logout' %}" style="display:inline;">
                     {% csrf_token %}
                     <button type="submit">Log out</button>
                 </form>
             </li>
-        {% else %}
+            {% if user.sitter or user.owner_and_sitter %}
+            <li><a href="{% url 'incoming_bookings' %}">Booking Requests</a></li>
+            {% endif %}
+            {% else %}
             <li><a href="{% url 'login' %}">Login</a></li>
             <li><a href="{% url 'signup' %}">Sign Up</a></li>
-        {% endif %}
+            {% endif %}
         </ul>
     </nav>
 
     {% block content %}{% endblock %}
 </body>
+
 </html>
-
-
-
