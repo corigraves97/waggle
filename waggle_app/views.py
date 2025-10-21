@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView
-from django.views.generic import DetailView, UpdateView, CreateView, ListView, DeleteView
+from django.views.generic import DetailView, UpdateView, CreateView, ListView, DeleteView, TemplateView
 from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Profile, Pet, Owner, Owner_and_Sitter, Sitter, Booking
@@ -10,7 +10,7 @@ from django.http import HttpResponse
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
-class Home(LoginView):
+class Home(TemplateView):
     template_name = 'home.html'
 
 def signup(request):

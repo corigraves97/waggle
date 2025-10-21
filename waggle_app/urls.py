@@ -1,11 +1,12 @@
 from django.urls import path
-from .views import Home, ProfileView, EditProfileView, AddPetView, PetListView, EditPetView, PetDetailView, DeletePetView, UserDirectoryView, UserProfileView, BookingListView, BookingRequestView, IncomingBookingListView
+from .views import Home, ProfileView, EditProfileView, AddPetView, PetListView, EditPetView, PetDetailView, DeletePetView, UserDirectoryView, UserProfileView, BookingListView, BookingRequestView, IncomingBookingListView, LoginView
 from . import views
 from django.contrib.auth.views import LogoutView
 
 
 urlpatterns = [
     path('signup/', views.signup, name='signup'),
+    path('login/', LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('setup_profile/', views.setup_profile, name='setup_profile'),
     path('', views.Home.as_view(), name='home'),
     path('profile/', ProfileView.as_view(), name='profile'),

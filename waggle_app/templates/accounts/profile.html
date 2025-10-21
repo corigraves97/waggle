@@ -19,7 +19,7 @@
     <p><strong>Experience:</strong> {{ sitter.experience }}</p>
     <p><strong>Specialty:</strong> {{ sitter.specialty }}</p>
     <p><strong>Bio:</strong> {{ sitter.bio }}</p>
-    <p><strong>Daily Rate:</strong> ${{both.rate}}</p>
+    <p><strong>Daily Rate:</strong> ${{sitter.rate}}</p>
   {% endwith %}
 {% elif profile.roles == 'both' %}
   {% with both=profile.user.owner_and_sitter %}
