@@ -334,3 +334,24 @@ class IncomingBookingListView(LoginRequiredMixin, ListView):
             return Booking.objects.filter(owner_and_sitter=user.owner_and_sitter).order_by('-booking_start')
         return Booking.objects.none()
     
+@login_required
+def manage_booking(request, pk):
+    booking = get_object_or_404(Booking, pk=pk)
+    user = request.user
+    allowed = False
+    if hasattr(user, 'sitter') and booking.sitter == user.sitter:
+        allowed = True
+    elif hasattr(user, 'owner_and_sitter') and booking.owner_and_sitter == user.owner_and_sitter:
+        allowed = True
+    
+    if not allowed:
+        return redirect('profile')
+    
+    if request.method == 'POST':
+        if 'approve' in request.POST:
+            booking.status = 'approved'
+        elif 'deny' in request.POST:
+            booking.status = 'denied'
+        booking.save()
+        return redirect('incoming_bookings')
+    return render(request, 'bookings/manage_booking.html', {'booking': booking})

@@ -23,9 +23,13 @@
       {% if booking.message %}
         <p><strong>Message:</strong> {{ booking.message }}</p>
       {% endif %}
-      <br>
-      <!-- approve/deny  -->
+      <form method="post" action="{% url 'manage_booking' booking.pk %}">
+        {% csrf_token %}
+        <button type="submit" name="approve" class="btn btn-success">Approve</button>
+        <button type="submit" name="deny" class="btn btn-danger">Deny</button>
+      </form>
     </div>
+    <br>
   {% endfor %}
 {% else %}
   <p>No incoming booking requests.</p>
