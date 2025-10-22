@@ -263,7 +263,7 @@ class BookingListView(LoginRequiredMixin, ListView):
 
         if hasattr(user, 'owner'):
             return Booking.objects.filter(owner=user.owner).order_by('-booking_start')
-        
+    
         elif hasattr(user, 'owner_and_sitter'):
             owner_and_sitter = user.owner_and_sitter
             owner_instance, _ = Owner.objects.get_or_create(

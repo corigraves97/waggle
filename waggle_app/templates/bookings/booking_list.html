@@ -1,35 +1,37 @@
 {% extends 'base.html' %}
-{% load static %}
-{% block head %}
-<link rel="stylesheet" href="{% static 'bookings/booking_list.css' %}">
-{% endblock %}
 {% block content %}
 <h1>My Bookings</h1>
-<br>
 
 {% if bookings %}
-{% for booking in bookings %}
-<div class="booking-card">
-  <h2>{{ booking.owner.name }} with
-    {% if booking.sitter %}
-    {{ booking.sitter.name }}
-    {% elif booking.owner_and_sitter %}
-    {{ booking.owner_and_sitter.name }}
-    {% else %}
-    Unknown
-    {% endif %}
-  </h2>
-  <p><strong>Dates:</strong> {{ booking.booking_start }} to {{ booking.booking_end }}</p>
-  <p><strong>Status:</strong> {{ booking.status }}</p>
-  <p><strong>Pets:</strong>
-    {% for pet in booking.pets.all %}
-    {{ pet.name }}{% if not forloop.last %}, {% endif %}
-    {% endfor %}
-  </p>
-</div>
-<br>
-{% endfor %}
+  {% for booking in bookings %}
+    <div class="booking-card">
+      <h3>{{ booking.owner.name }} with
+        {% if booking.sitter %}
+          {{ booking.sitter.name }}
+        {% else %}
+          {{ booking.owner_and_sitter.name }}
+        {% endif %}
+      </h3>
+      <p><strong>Dates:</strong> {{ booking.booking_start }} to {{ booking.booking_end }}</p>
+      <p><strong>Pets:</strong> 
+        {% for pet in booking.pets.all %}
+          {{ pet.name }}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+      </p>
+      <p>
+        <strong>Status:</strong> 
+        {% if booking.status == 'pending' %}
+          <span class="status-pending">Pending</span>
+        {% elif booking.status == 'approved' %}
+          <span class="status-approved">Approved</span>
+        {% elif booking.status == 'denied' %}
+          <span class="status-denied">Denied</span>
+        {% endif %}
+      </p>
+    </div>
+  {% endfor %}
 {% else %}
-<p>No bookings found.</p>
+  <p>No bookings found.</p>
 {% endif %}
+
 {% endblock %}

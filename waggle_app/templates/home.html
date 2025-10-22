@@ -8,8 +8,6 @@
   <p>Find trusted pet sitters near you and give your pets the care they deserve.</p>
 
   {% if not user.is_authenticated %}
-    <a href="{% url 'login' %}" class="btn">Login</a>
-    <a href="{% url 'signup' %}" class="btn">Sign Up</a>
   {% else %}
     <a href="{% url 'profile' %}" class="btn">Go to Profile</a>
   {% endif %}
