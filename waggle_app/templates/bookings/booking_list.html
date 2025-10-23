@@ -7,7 +7,7 @@
 {% endblock %}
 {% block content %}
 <h1>My Bookings</h1>
-
+<br>
 {% if bookings %}
   {% for booking in bookings %}
     <div class="booking-card">
@@ -42,6 +42,7 @@
         {% csrf_token %}
         <button type="submit" name="canceled" class="btn btn-danger">Cancel Booking</button>
       </form>
+      <a href="{% url 'booking_detail' booking.pk %}" class="btn btn-primary">View Details</a>
     </div>
   {% endfor %}
 {% else %}

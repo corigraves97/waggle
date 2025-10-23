@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'waggle_app/css/bookings/booking_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="booking-detail">
+  <h2>Booking Details</h2>
+  <p><strong>Pet:</strong> {{ booking.pet.name }}</p>
+  <p><strong>Owner:</strong> {{ booking.owner.user.username }}</p>
+  <p><strong>Sitter:</strong> 
+    {% if booking.sitter %}
+      {{ booking.sitter.user.username }}
+    {% else %}
+      {{ booking.owner_and_sitter.name }}
+    {% endif %}
+  </p>
+  <p><strong>Start Date:</strong> {{ booking.start_date }}</p>
+  <p><strong>End Date:</strong> {{ booking.end_date }}</p>
+  <p><strong>Status:</strong> {{ booking.status|title }}</p>
+  {% if booking.notes %}
+    <p><strong>Notes:</strong> {{ booking.notes }}</p>
+  {% endif %}
+  <a href="{% url 'booking_list' %}" class="btn">Back to Bookings</a>
+</section>
+
+<section class="messages">
+  <h3>Messages</h3>
+  {% for msg in booking.messages.all %}
+    <div class="message {% if msg.sender == user %}sent{% else %}received{% endif %}">
+      <p><strong>{{ msg.sender.username }}</strong>: {{ msg.content }}</p>
+      <span class="timestamp">{{ msg.timestamp|date:"M d, H:i" }}</span>
+    </div>
+  {% empty %}
+    <p>No messages yet.</p>
+  {% endfor %}
+<section class="send-message">
+<h3>Send a Message</h3>
+    <form method="post" action="{% url 'send_message' booking.pk %}">
+        {% csrf_token %}
+        {{ message_form.content }}
+        <button type="submit" class="msgbtn">Send</button>
+    </form>
+</section>
+</section>
+{% endblock %}

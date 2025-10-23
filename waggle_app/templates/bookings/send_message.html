@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'waggle_app/css/bookings/messageform.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="send-message-form">
+  <h2>Send a Message</h2>
+  
+  <form method="post" class="message-form">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="msgbtn">Send</button>
+  </form>
+
+  <a href="{% url 'booking_detail' booking.pk %}" class="backbtn">Back to Booking</a>
+</section>
+{% endblock %}

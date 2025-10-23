@@ -26,9 +26,10 @@
       {% endif %}
       <form method="post" action="{% url 'manage_booking' booking.pk %}">
         {% csrf_token %}
-        <button type="submit" name="approve" class="approve">Approve</button>
+        <button type="submit" name="approve" class="approvebtn">Approve</button>
         <button type="submit" name="deny" class="btn btn-danger">Deny</button>
       </form>
+       <a href="{% url 'booking_detail' booking.pk %}" class="btn btn-primary">View Details</a>
     </div>
     <br>
   {% endfor %}

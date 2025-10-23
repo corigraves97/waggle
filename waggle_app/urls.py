@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Home, ProfileView, EditProfileView, AddPetView, PetListView, EditPetView, PetDetailView, DeletePetView, UserDirectoryView, UserProfileView, BookingListView, BookingRequestView, IncomingBookingListView, LoginView
+from .views import Home, ProfileView, EditProfileView, AddPetView, PetListView, EditPetView, PetDetailView, DeletePetView, UserDirectoryView, UserProfileView, BookingListView, BookingRequestView, IncomingBookingListView, LoginView, BookingDetailView
 from . import views
 from django.contrib.auth.views import LogoutView
 
@@ -22,6 +22,8 @@ urlpatterns = [
     path('bookings/', BookingListView.as_view(), name='booking_list'),
     path('bookings/add_booking/<int:pk>', BookingRequestView.as_view(), name='add_booking'),
     path('bookings/incoming/', IncomingBookingListView.as_view(), name='incoming_bookings'),
+    path('bookings/<int:pk>',  BookingDetailView.as_view(), name='booking_detail'),
     path('bookings/<int:pk>/manage/', views.manage_booking, name='manage_booking'),
-    path('bookings/<int:pk>/cancel/', views.cancel_booking, name='cancel_booking')
+    path('bookings/<int:pk>/cancel/', views.cancel_booking, name='cancel_booking'),
+    path('bookings/<int:pk>/message/', views.send_message, name='send_message'),
 ]

@@ -1,15 +1,43 @@
 {% extends 'base.html' %}
-
-{% block title %}Home - Waggle{% endblock %}
+{% load static %}
+{% block head %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'waggle_app/css/home.css' %}">
+{% endblock %}
 
 {% block content %}
 <main class="home-main">
-  <h1>Welcome to Waggle</h1>
-  <p>Find trusted pet sitters near you and give your pets the care they deserve.</p>
+  <section class="hero">
+    <h1>Welcome to Waggle</h1>
+    <p>Find trusted pet sitters near you and give your pets the care they deserve.</p>
+  </section>
 
-  {% if not user.is_authenticated %}
-  {% else %}
-    <a href="{% url 'profile' %}" class="btn">Go to Profile</a>
-  {% endif %}
+  <section class="features">
+    <h2>How Waggle Works</h2>
+    <ul>
+      <li><strong>Browse Pet Sitters:</strong> View trusted sitters in your area with verified profiles.</li>
+      <li><strong>Book with Ease:</strong> Schedule a booking with just a few clicks. Keep track of your pet's needs and schedules.</li>
+      <li><strong>Communicate Securely:</strong> Chat with sitters directly through the app to share updates and instructions.</li>
+    </ul>
+  </section>
+
+  <section class="benefits">
+    <h2>Coming Soon!</h2>
+    <p>Waggle wants to connect pet owners with reliable, local sitters so you can travel or work with peace of mind. Our platform ensures:</p>
+    <ul>
+      <li>Verified sitters with background checks</li>
+      <li>Secure booking and payment system</li>
+    </ul>
+  </section>
+
+  <section class="call-to-action">
+    <h2>Ready to get started?</h2>
+    {% if not user.is_authenticated %}
+      <a href="{% url 'signup' %}" class="btn btn-primary">Sign Up Now</a>
+    {% else %}
+      <a href="{% url 'booking_list' %}" class="btn btn-primary">View Your Bookings</a>
+    {% endif %}
+  </section>
 </main>
 {% endblock %}
+

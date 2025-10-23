@@ -1,0 +1,69 @@
+.send-message-form {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  font-family: 'Poppins', sans-serif;
+}
+
+.send-message-form h2 {
+  font-size: 1.8rem;
+  color: #4a3f35;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #f4e3c1;
+  padding-bottom: 0.5rem;
+}
+
+.message-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.message-form input, .message-form textarea {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #fdf3df;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.message-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.msgbtn, .btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.msgbtn {
+  background-color: #d6b36b
+  color: #fff;
+}
+
+.msgbtn:hover {
+  background-color: #d6b36b
+}
+
+.backbtn {
+  background-color: #6c757d;
+  color: #fff;
+  display: inline-block;
+  margin-top: 1rem;
+  text-decoration: none;
+}
+
+.backbtn:hover {
+  background-color: #5a6268;
+}

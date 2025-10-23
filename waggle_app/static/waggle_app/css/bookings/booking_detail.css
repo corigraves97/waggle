@@ -1,0 +1,98 @@
+
+.booking-detail {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #faf7f2;
+  border-radius: 12px;
+  border: 1px solid #e5d5b4;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  font-family: 'Poppins', sans-serif;
+}
+
+.booking-detail h2 {
+  margin-bottom: 1rem;
+  color: #4a3f35;
+  font-size: 1.8rem;
+  border-bottom: 2px solid #e5d5b4;
+  padding-bottom: 0.5rem;
+}
+
+.booking-detail p {
+  margin: 0.5rem 0;
+  color: #5c5346;
+}
+
+.booking-detail strong {
+  color: #4a3f35;
+}
+
+.booking-detail .btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #d6b36b;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.booking-detail .btn:hover {
+  background-color: #c39a4d;
+}
+
+.messages {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1rem 1.5rem;
+  background-color: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5d5b4;
+}
+
+.message {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  max-width: 80%;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.message.sent {
+  background-color: #73e58433; /* soft green */
+  margin-left: auto;
+  text-align: right;
+}
+
+.message.received {
+  background-color: #e5737333; /* soft red */
+  margin-right: auto;
+  text-align: left;
+}
+
+.message .timestamp {
+  display: block;
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 0.25rem;
+}
+
+.msgbtn {
+  padding: 0.6rem 1.2rem;
+  background-color: #d6b36b;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.msgbtn:hover {
+  background-color: #c39a4d;
+}

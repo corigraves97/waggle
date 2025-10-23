@@ -1,55 +1,93 @@
 
 .booking-card {
-  background-color: #fff;
+  background-color: #faf7f2;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-bottom: 16px;
-  transition: transform 0.2s, box-shadow 0.2s;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e5d5b4;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: 'Poppins', sans-serif;
 }
 
 .booking-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-.booking-card h2 {
-  font-size: 1.25rem;
-  margin-bottom: 8px;
-  color: #333;
+.booking-card h3 {
+  margin: 0 0 0.5rem 0;
+  color: #4a3f35;
+  font-size: 1.3rem;
 }
 
 .booking-card p {
-  margin: 4px 0;
-  color: #555;
+  margin: 0.3rem 0;
+  color: #5c5346;
+  font-size: 0.95rem;
 }
 
 .booking-card strong {
-  color: #222;
+  color: #4a3f35;
+}
+
+.status-pending {
+  color: #ffb74d;
+  font-weight: 600;
+}
+
+.status-approved {
+  color: #73e584;
+  font-weight: 600;
+}
+
+.status-denied {
+  color: #e57373;
+  font-weight: 600;
+}
+
+.status-canceled {
+  color: #b0bec5;
+  font-weight: 600;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #d6b36b;
+  color: #fff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #c39a4d;
 }
 
 .btn-danger {
   background-color: #e57373;
   color: #fff;
   border: none;
-  border-radius: 8px;
-  padding: 0.6rem 1.2rem;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-  font-size: 1rem;
-}
-
-.approve {
-  background-color: #73e584;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 0.6rem 1.2rem;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-  font-size: 1rem;
 }
 
 .btn-danger:hover {
   background-color: #d32f2f;
+}
+
+form {
+  margin-top: 0.5rem;
+}
+
+.approvebtn {
+  background-color: #8fe573 !important;
+  color: #fff;
+  border: none;
 }

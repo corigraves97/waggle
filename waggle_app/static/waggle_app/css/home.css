@@ -1,59 +1,100 @@
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background: linear-gradient(to bottom right, #f5f7fa, #c3cfe2);
+.home-main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    font-family: 'Arial', sans-serif;
     color: #333;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-header {
-    background-color: #4a90e2;
-    color: white;
-    padding: 20px 40px;
-    text-align: center;
-}
-
-header h1 a {
-    color: white;
-    text-decoration: none;
-}
-
-main.home-main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 20px;
-    text-align: center;
-}
-
-main.home-main h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-main.home-main p {
-    font-size: 1.2rem;
-    max-width: 600px;
     line-height: 1.6;
 }
 
+.hero {
+    text-align: center;
+    background: #f5f8fa;
+    padding: 3rem 1rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
 
-@media (max-width: 768px) {
-    main.home-main h1 {
-        font-size: 2rem;
-    }
+.hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #d6b36b;
+}
 
-    main.home-main p {
-        font-size: 1rem;
-    }
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+.hero .btn {
+    margin: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: #d6b36b;
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #1e5bb8;
+}
+
+.btn-secondary {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+}
+
+.features,
+.benefits,
+.call-to-action {
+    margin-bottom: 2.5rem;
+    padding: 2rem 1rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.features h2,
+.benefits h2,
+.call-to-action h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #d6b36b;
+}
+
+.features ul,
+.benefits ul {
+    list-style: disc; 
+    padding-left: 1.5rem;
+}
+
+.features li,
+.benefits li {
+    margin-bottom: 0.8rem;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+
+.call-to-action {
+    text-align: center;
+    background: #eaf2ff;
+}
+
+.call-to-action .btn {
+    font-size: 1.1rem;
+    padding: 0.9rem 2rem;
 }
