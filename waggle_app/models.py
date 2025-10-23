@@ -69,6 +69,7 @@ class Booking(models.Model):
         ('pending', 'Pending'),
         ('approved', 'Approved'),
         ('denied', 'Denied'),
+        ('canceled', 'Cancel'),
     ]
     booking_start = models.DateField('Start Date')
     booking_end = models.DateField('End Date')

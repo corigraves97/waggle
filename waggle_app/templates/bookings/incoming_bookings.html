@@ -1,8 +1,9 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" href="{% static 'bookings/booking_list.css' %}">
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'waggle_app/css/bookings/booking_list.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -25,7 +26,7 @@
       {% endif %}
       <form method="post" action="{% url 'manage_booking' booking.pk %}">
         {% csrf_token %}
-        <button type="submit" name="approve" class="btn btn-success">Approve</button>
+        <button type="submit" name="approve" class="approve">Approve</button>
         <button type="submit" name="deny" class="btn btn-danger">Deny</button>
       </form>
     </div>

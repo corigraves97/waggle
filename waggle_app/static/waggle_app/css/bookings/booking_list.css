@@ -27,3 +27,29 @@
 .booking-card strong {
   color: #222;
 }
+
+.btn-danger {
+  background-color: #e57373;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+}
+
+.approve {
+  background-color: #73e584;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn-danger:hover {
+  background-color: #d32f2f;
+}

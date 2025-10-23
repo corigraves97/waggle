@@ -23,4 +23,5 @@ urlpatterns = [
     path('bookings/add_booking/<int:pk>', BookingRequestView.as_view(), name='add_booking'),
     path('bookings/incoming/', IncomingBookingListView.as_view(), name='incoming_bookings'),
     path('bookings/<int:pk>/manage/', views.manage_booking, name='manage_booking'),
+    path('bookings/<int:pk>/cancel/', views.cancel_booking, name='cancel_booking')
 ]

@@ -9,6 +9,7 @@ from .forms import SignupForm, OwnerForm, SitterForm, BothForm, PetForm, Booking
 from django.http import HttpResponse
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 class Home(TemplateView):
     template_name = 'home.html'
@@ -362,15 +363,46 @@ class IncomingBookingListView(LoginRequiredMixin, ListView):
         return Booking.objects.none()
     
 @login_required
+def cancel_booking(request, pk):
+    booking = get_object_or_404(Booking, pk=pk)
+    user = request.user
+    is_owner = hasattr(user, 'owner') and booking.owner == user.owner
+    is_owner_and_sitter = hasattr(user, 'owner_and_sitter') and booking.owner_and_sitter == user.owner_and_sitter
+
+    if not (is_owner or is_owner_and_sitter):
+        messages.error(request, 'You do not have permission to cancel this booking')
+        return redirect('booking_list')
+
+    if booking.status == 'cancelled':
+        messages.info(request, 'This booking has already been cancelled')
+    else:
+        booking.status = 'cancelled'
+        booking.save()
+        messages.success(request, 'Your booking request has been cancelled successfully')
+    return redirect('booking_list')
+        
+    
+@login_required
 def manage_booking(request, pk):
     booking = get_object_or_404(Booking, pk=pk)
     user = request.user
     allowed = False
+    cancel = False
     if hasattr(user, 'sitter') and booking.sitter == user.sitter:
         allowed = True
     elif hasattr(user, 'owner_and_sitter') and booking.owner_and_sitter == user.owner_and_sitter:
         allowed = True
+        cancel = True
+    elif hasattr(user, 'owner') and booking.owner == user.owner:
+        allowed = False
+        cancel = True
     
+    if cancel and request.method == 'POST':
+        if 'canceled' in request.POST:
+            booking.status = 'canceled'
+            booking.save()
+            return redirect('booking_list')
+        
     if not allowed:
         return redirect('profile')
     
@@ -381,4 +413,6 @@ def manage_booking(request, pk):
             booking.status = 'denied'
         booking.save()
         return redirect('incoming_bookings')
+
+        
     return render(request, 'bookings/manage_booking.html', {'booking': booking})

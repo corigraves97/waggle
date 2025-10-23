@@ -1,4 +1,10 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'waggle_app/css/bookings/booking_list.css' %}">
+{% endblock %}
 {% block content %}
 <h1>My Bookings</h1>
 
@@ -27,8 +33,15 @@
           <span class="status-approved">Approved</span>
         {% elif booking.status == 'denied' %}
           <span class="status-denied">Denied</span>
+        {% elif booking.status == 'canceled' %}
+          <span class="status-canceled">Canceled</span>
         {% endif %}
       </p>
+      <br>
+      <form method="post" action="{% url 'manage_booking' booking.pk %}">
+        {% csrf_token %}
+        <button type="submit" name="canceled" class="btn btn-danger">Cancel Booking</button>
+      </form>
     </div>
   {% endfor %}
 {% else %}
