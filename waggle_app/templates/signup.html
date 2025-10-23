@@ -1,10 +1,28 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'waggle_app/css/auth/signup.css' %}">
+{% endblock %}
+
 {% block content %}
-<h1>Sign Up</h1>
-<form method="post">
+<div class="page-header">
+  <h1>Create Your Waggle Account</h1>
+</div>
+
+{% if form.errors %}
+  <p class="red-text">Please correct the errors below and try again.</p>
+{% endif %}
+
+<div class="form-container">
+  <form method="post" novalidate>
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign Up</button>
-</form>
+    <table>
+      {{ form.as_table }}
+    </table>
+    <button type="submit" class="btn submit">Sign Up</button>
+  </form>
+</div>
 {% endblock %}
 

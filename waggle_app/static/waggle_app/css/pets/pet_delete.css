@@ -1,0 +1,53 @@
+.pet-delete-container {
+  max-width: 500px;
+  margin: 3rem auto;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  border: 2px solid #f4e3c1;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
+.pet-delete-container h2 {
+  color: #b30000;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.pet-delete-container form {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.pet-delete-container button,
+.pet-delete-container a {
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pet-delete-container button {
+  background-color: #ff6666;
+  color: #fff;
+}
+
+.pet-delete-container button:hover {
+  background-color: #e05555;
+}
+
+.pet-delete-container a {
+  background-color: #ccc;
+  color: #333;
+}
+
+.pet-delete-container a:hover {
+  background-color: #b3b3b3;
+}

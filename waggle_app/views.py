@@ -289,7 +289,31 @@ class BookingRequestView(LoginRequiredMixin, CreateView):
     model = Booking
     form_class = BookingForm
     template_name = 'bookings/add_booking.html'
-    success_url = reverse_lazy('booking_list') 
+    success_url = reverse_lazy('booking_list')
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+
+        user = self.request.user
+        owner_instance = None
+
+        if hasattr(user, 'owner'):
+            owner_instance = user.owner
+        elif hasattr(user, 'owner_and_sitter'):
+            owner_and_sitter_instance = user.owner_and_sitter
+            owner_instance, _ = Owner.objects.get_or_create(
+                user=user,
+                defaults={
+                    "name": owner_and_sitter_instance.name,
+                    "city": owner_and_sitter_instance.city,
+                    "state": owner_and_sitter_instance.state,
+                },
+            )
+
+        if owner_instance:
+            form.fields['pets'].queryset = Pet.objects.filter(owner=owner_instance)
+
+        return form
 
     def form_valid(self, form):
         user = self.request.user
@@ -307,19 +331,22 @@ class BookingRequestView(LoginRequiredMixin, CreateView):
                 },
             )
         else:
-            return redirect('profile') 
+            return redirect('profile')
 
         form.instance.owner = owner_instance
 
         target_pk = self.kwargs.get('pk')
-        sitter_instance = Sitter.objects.filter(pk=target_pk).first()
-        if sitter_instance:
-            form.instance.sitter = sitter_instance
-        else:
-            owner_and_sitter_instance = get_object_or_404(Owner_and_Sitter, pk=target_pk)
+        owner_and_sitter_instance = Owner_and_Sitter.objects.filter(pk=target_pk).first()
+        if owner_and_sitter_instance:
             form.instance.owner_and_sitter = owner_and_sitter_instance
+            form.instance.sitter = None
+        else:
+            sitter_instance = get_object_or_404(Sitter, pk=target_pk)
+            form.instance.sitter = sitter_instance
+            form.instance.owner_and_sitter = None
 
         return super().form_valid(form)
+
 
 class IncomingBookingListView(LoginRequiredMixin, ListView):
     template_name = 'bookings/incoming_bookings.html'

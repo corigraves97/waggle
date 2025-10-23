@@ -1,10 +1,18 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'waggle_app/css/pets/pet_delete.css' %}">
+{% endblock %}
 
 {% block content %}
-<h2>Delete {{ object.name }}?</h2>
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Yes, delete</button>
-    <a href="{% url 'pet_list' %}">Cancel</a>
-</form>
+<div class="pet-delete-container">
+    <h2>Delete {{ object.name }}?</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, delete</button>
+        <a href="{% url 'pet_list' %}">Cancel</a>
+    </form>
+</div>
 {% endblock %}

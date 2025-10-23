@@ -1,0 +1,68 @@
+.pet-detail-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  border: 2px solid #f4e3c1;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Poppins', sans-serif;
+}
+
+.pet-detail-container h2 {
+  font-size: 2rem;
+  color: #4a3f35;
+  margin-bottom: 1rem;
+}
+
+.pet-detail-container ul {
+  list-style: none;
+  padding: 0;
+  color: #5c5346;
+}
+
+.pet-detail-container ul li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.pet-detail-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.pet-detail-actions a {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.pet-detail-actions a.edit {
+  background-color: #d6b36b;
+  color: #fff;
+}
+
+.pet-detail-actions a.edit:hover {
+  background-color: #c39a4d;
+}
+
+.pet-detail-actions a.delete {
+  background-color: #ff6666;
+  color: #fff;
+}
+
+.pet-detail-actions a.delete:hover {
+  background-color: #e05555;
+}
+
+.pet-detail-actions a.back {
+  background-color: #ccc;
+  color: #333;
+}
+
+.pet-detail-actions a.back:hover {
+  background-color: #b3b3b3;
+}

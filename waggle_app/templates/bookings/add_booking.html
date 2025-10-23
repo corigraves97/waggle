@@ -1,49 +1,59 @@
-{# templates/bookings/add_booking.html #}
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Send Booking Request - Waggle{% endblock %}
+
+{% block head %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'waggle_app/css/forms.css' %}">
+{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
+<div class="form-page-container">
     <h2>Send Booking Request to {{ sitter.name }}</h2>
 
-    <form method="post">
+    {% if form.errors %}
+        <div class="error-messages">
+            <p>Please correct the following errors:</p>
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <form method="post" class="form-card">
         {% csrf_token %}
 
-        <div class="form-group mb-3">
-            <label for="id_pets">Select Pets:</label>
+        <div class="form-group">
+            {{ form.pets.label_tag }}
             {{ form.pets }}
-            {% if form.pets.errors %}
-                <div class="text-danger">{{ form.pets.errors }}</div>
-            {% endif %}
         </div>
 
-        {# Booking start date #}
-        <div class="form-group mb-3">
-            <label for="id_booking_start">Start Date:</label>
+        <div class="form-group">
+            {{ form.booking_start.label_tag }}
             {{ form.booking_start }}
-            {% if form.booking_start.errors %}
-                <div class="text-danger">{{ form.booking_start.errors }}</div>
-            {% endif %}
         </div>
 
-        {# Booking end date #}
-        <div class="form-group mb-3">
-            <label for="id_booking_end">End Date:</label>
+        <div class="form-group">
+            {{ form.booking_end.label_tag }}
             {{ form.booking_end }}
-            {% if form.booking_end.errors %}
-                <div class="text-danger">{{ form.booking_end.errors }}</div>
-            {% endif %}
         </div>
 
-        <div class="form-group mb-3">
-            <label for="id_message">Message:</label>
+        <div class="form-group">
+            {{ form.message.label_tag }}
             {{ form.message }}
-            {% if form.message.errors %}
-                <div class="text-danger">{{ form.message.errors }}</div>
-            {% endif %}
         </div>
 
         <button type="submit" class="btn btn-primary">Send Booking Request</button>
-        <a href="{% url 'user_directory' %}" class="btn btn-secondary">Cancel</a>
+        <a href="{% url 'user_directory' %}" class="cancel">Cancel</a>
     </form>
 </div>
 {% endblock %}
+

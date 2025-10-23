@@ -12,7 +12,8 @@
           {{ booking.owner_and_sitter.name }}
         {% endif %}
       </h3>
-      <p><strong>Dates:</strong> {{ booking.booking_start }} to {{ booking.booking_end }}</p>
+      <p><strong>Start Date:</strong> {{ booking.booking_start }}</p>
+      <p><strong>End Date:</strong> {{ booking.booking_end }}</p>
       <p><strong>Pets:</strong> 
         {% for pet in booking.pets.all %}
           {{ pet.name }}{% if not forloop.last %}, {% endif %}

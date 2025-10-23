@@ -1,22 +1,37 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'waggle_app/css/pets/pet_list.css' %}">
+{% endblock %}
+
 {% block title %}My Pets{% endblock %}
 
 {% block content %}
-<h1>My Pets</h1>
+<div class="container mt-5">
+    <h1>My Pets</h1>
 
-{% if pets %}
-    <ul>
-        {% for pet in pets %}
-            <li><a href="{% url 'pet_detail' pet.pk %}"><strong>{{ pet.name }}</strong> </a>
-                ({{ pet.species }})
-                {% if pet.breed %} - {{ pet.breed }}{% endif %}
-                <br>
-                Age: {{ pet.age }} years
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>You haven't added any pets yet.</p>
-    <a href="{% url 'add_pet' %}">Add your first pet</a>
-{% endif %}
+    {% if pets %}
+        <div class="pet-list">
+            {% for pet in pets %}
+                <div class="pet-card">
+                    <h2><a href="{% url 'pet_detail' pet.pk %}">{{ pet.name }}</a></h2>
+                    <p><strong>Species:</strong> {{ pet.species }}</p>
+                    {% if pet.breed %}
+                        <p><strong>Breed:</strong> {{ pet.breed }}</p>
+                    {% endif %}
+                    <p><strong>Age:</strong> {{ pet.age }} years</p>
+                    <div class="pet-actions">
+                        <a href="{% url 'edit_pet' pet.pk %}" class="btn btn-primary">Edit</a>
+                        <a href="{% url 'delete_pet' pet.pk %}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>You haven't added any pets yet.</p>
+        <a href="{% url 'add_pet' %}" class="btn btn-primary">Add your first pet</a>
+    {% endif %}
+</div>
 {% endblock %}

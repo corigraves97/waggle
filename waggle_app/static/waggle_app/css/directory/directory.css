@@ -1,0 +1,63 @@
+.user-directory-container {
+  max-width: 900px;
+  margin: 3rem auto;
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 2px solid #f4e3c1;
+  font-family: 'Poppins', sans-serif;
+}
+
+.user-directory-container h1 {
+  text-align: center;
+  color: #4a3f35;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.user-directory {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user-directory li {
+  background: #faf7f2;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e5d5b4;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.user-directory li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.user-directory h2 {
+  margin: 0 0 0.5rem 0;
+  color: #4a3f35;
+  font-size: 1.3rem;
+}
+
+.user-directory h2 a {
+  text-decoration: none;
+  color: #d6b36b;
+  transition: color 0.2s ease;
+}
+
+.user-directory h2 a:hover {
+  color: #c39a4d;
+}
+
+.user-directory p {
+  margin: 0.2rem 0;
+  color: #5c5346;
+  font-size: 0.95rem;
+}
+
+.user-directory li:last-child {
+  margin-bottom: 0;
+}

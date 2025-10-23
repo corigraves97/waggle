@@ -1,18 +1,28 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'waggle_app/css/pets/pet_detail.css' %}">
+{% endblock %}
 
 {% block content %}
-<h2>{{ pet.name }}</h2>
+<div class="pet-detail-container">
+    <h2>{{ pet.name }}</h2>
 
-<ul>
-    <li><strong>Species:</strong> {{ pet.get_species_display }}</li>
-    <li><strong>Breed:</strong> {{ pet.breed }}</li>
-    <li><strong>Age:</strong> {{ pet.age }}</li>
-    <li><strong>Feed Schedule:</strong> {{ pet.feed_schedule }}</li>
-    <li><strong>Medicine:</strong> {{ pet.medicine }}</li>
-    <li><strong>Description:</strong> {{ pet.description }}</li>
-</ul>
+    <ul>
+        <li><strong>Species:</strong> {{ pet.get_species_display }}</li>
+        <li><strong>Breed:</strong> {{ pet.breed }}</li>
+        <li><strong>Age:</strong> {{ pet.age }}</li>
+        <li><strong>Feed Schedule:</strong> {{ pet.feed_schedule }}</li>
+        <li><strong>Medicine:</strong> {{ pet.medicine }}</li>
+        <li><strong>Description:</strong> {{ pet.description }}</li>
+    </ul>
 
-<a href="{% url 'edit_pet' pet.pk %}">Edit</a> 
-<a href="{% url 'delete_pet' pet.pk %}">Delete</a> 
-<a href="{% url 'pet_list' %}">Back to Pet List</a>
+    <div class="pet-detail-actions">
+        <a href="{% url 'edit_pet' pet.pk %}" class="edit">Edit</a>
+        <a href="{% url 'delete_pet' pet.pk %}" class="delete">Delete</a>
+        <a href="{% url 'pet_list' %}" class="back">Back to Pet List</a>
+    </div>
+</div>
 {% endblock %}

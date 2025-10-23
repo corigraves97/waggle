@@ -1,20 +1,31 @@
 {% extends "base.html" %}
-{% block content %}
-<h1>Available Pet Sitters</h1>
+{% load static %}
 
-<ul class="user-directory">
-  {% for user in users %}
-    <li>
-      <h2><a href="{% url 'user_profile' user.user.id %}">{{ user.name }} ${{user.rate}}/day</a></h2>
-      <p>Location: {{ user.city }}, {{ user.state }}</p>
-      {% if user.role != 'unknown' %}
-        <p>Years of Experience: {{ user.experience }}</p>
-      {% endif %}
-    </li>
-  {% empty %}
-    <li>No users found.</li>
-  {% endfor %}
-</ul>
-
+{% block head %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'waggle_app/css/directory/directory.css' %}">
 {% endblock %}
 
+{% block content %}
+<div class="user-directory-container">
+  <h1>Available Pet Sitters</h1>
+
+  <ul class="user-directory">
+    {% for user in users %}
+      <li>
+        <h2>
+          <a href="{% url 'user_profile' user.user.id %}">
+            {{ user.name }} - ${{ user.rate }}/day
+          </a>
+        </h2>
+        <p>Location: {{ user.city }}, {{ user.state }}</p>
+        {% if user.role != 'unknown' %}
+          <p>Experience: {{ user.experience }} years</p>
+        {% endif %}
+      </li>
+    {% empty %}
+      <li>No users found.</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
