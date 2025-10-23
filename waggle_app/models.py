@@ -84,6 +84,17 @@ class Booking(models.Model):
     def __str__(self):
         return f"Booking by {self.owner.name} with {self.sitter.name} ({self.status})"
 
+class Message(models.Model):
+    booking = models.ForeignKey('Booking', on_delete = models.CASCADE, related_name = 'messages')
+    sender = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['timestamp']
+    
+    def __str__(self):
+        return f"Message from {self.sender} at {self.timestamp}"
 
 class Profile(models.Model):
     ROLE_CHOICES = [
