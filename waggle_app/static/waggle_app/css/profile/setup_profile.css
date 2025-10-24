@@ -1,0 +1,101 @@
+body {
+  font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f8f5f2;
+  color: #2e2c29;
+  margin: 0;
+  padding: 0;
+}
+
+/* Page Header */
+h1 {
+  text-align: center;
+  color: #4b3c2f;
+  font-size: 2rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Section Headers */
+h2 {
+  color: #d6b36b;
+  font-size: 1.3rem;
+  margin-top: 1.5rem;
+  border-bottom: 2px solid #e0cda7;
+  padding-bottom: 0.4rem;
+}
+
+/* Scope all form styling to only this page */
+form.setup-profile-form {
+  background: #fffaf6;
+  border: 1px solid #e4ddd7;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.04);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  max-width: 600px;
+  margin: 0 auto 4rem;
+}
+
+form.setup-profile-form input,
+form.setup-profile-form select,
+form.setup-profile-form textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #d1c7bf;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+form.setup-profile-form input:focus,
+form.setup-profile-form select:focus,
+form.setup-profile-form textarea:focus {
+  border-color: #a37b4a;
+  box-shadow: 0 0 0 3px rgba(163, 123, 74, 0.15);
+  outline: none;
+}
+
+form.setup-profile-form label {
+  font-weight: 500;
+  color: #3c342e;
+  display: block;
+}
+
+/* Only style the submit button inside the setup form */
+form.setup-profile-form button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #d6b36b;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: background-color 0.25s ease, transform 0.15s ease;
+}
+
+form.setup-profile-form button[type="submit"]:hover {
+  background-color: #c29d5d;
+  transform: translateY(-2px);
+}
+
+form.setup-profile-form button[type="submit"]:active {
+  background-color: #b08b4e;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  form.setup-profile-form {
+    padding: 1.5rem;
+  }
+  h1 {
+    font-size: 1.6rem;
+  }
+}
+
