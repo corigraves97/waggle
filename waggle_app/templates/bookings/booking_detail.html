@@ -8,7 +8,14 @@
 {% block content %}
 <section class="booking-detail">
   <h2>Booking Details</h2>
-  <p><strong>Pet:</strong> {{ booking.pet.name }}</p>
+
+  <p><strong>Pets:</strong>
+    {% for pet in booking.pets.all %}
+      {{ pet.name }}{% if not forloop.last %}, {% endif %}
+    {% empty %}
+      No pets assigned.
+    {% endfor %}
+  </p>
   <p><strong>Owner:</strong> {{ booking.owner.user.username }}</p>
   <p><strong>Sitter:</strong> 
     {% if booking.sitter %}
@@ -17,11 +24,11 @@
       {{ booking.owner_and_sitter.name }}
     {% endif %}
   </p>
-  <p><strong>Start Date:</strong> {{ booking.start_date }}</p>
-  <p><strong>End Date:</strong> {{ booking.end_date }}</p>
+  <p><strong>Start Date:</strong> {{ booking.booking_start|date:"M d, Y" }}</p>
+  <p><strong>End Date:</strong> {{ booking.booking_end|date:"M d, Y" }}</p>
   <p><strong>Status:</strong> {{ booking.status|title }}</p>
-  {% if booking.notes %}
-    <p><strong>Notes:</strong> {{ booking.notes }}</p>
+  {% if booking.message %}
+    <p><strong>Notes:</strong> {{ booking.message }}</p>
   {% endif %}
   <a href="{% url 'booking_list' %}" class="btn">Back to Bookings</a>
 </section>
