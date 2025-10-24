@@ -136,7 +136,7 @@ class AddPetView(CreateView):
             )
 
         else:
-            return reverse_lazy('profile')
+            return reverse_lazy('pet_list')
         
         form.instance.owner = owner_instance
         if owner_and_sitter_instance:
